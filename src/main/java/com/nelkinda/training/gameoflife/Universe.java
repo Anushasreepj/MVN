@@ -1,28 +1,19 @@
 package com.nelkinda.training.gameoflife;
 
-import lombok.EqualsAndHashCode;
-
 import java.util.Set;
 import java.util.stream.Stream;
+
+import lombok.Generated;
 
 import static com.nelkinda.training.gameoflife.Rules.CONWAY_RULES;
 import static java.util.stream.Collectors.toSet;
 import static java.util.stream.Stream.concat;
 
-@EqualsAndHashCode
 @SuppressWarnings({"java:S119","ClassTypeParameterName", "PMD.GenericsNaming"})
-public class Universe<Cell extends Point<Cell>> {
-    private final Rules rules;
-    private final Set<Cell> life;
-
+public record Universe<Cell extends Point<Cell>>(@Generated Rules rules, @Generated Set<Cell> life) {
     @SafeVarargs
     Universe(final Rules rules, final Cell... life) {
         this(rules, Set.of(life));
-    }
-
-    private Universe(final Rules rules, final Set<Cell> life) {
-        this.rules = rules;
-        this.life = life;
     }
 
     Universe(final Set<Cell> life) {
