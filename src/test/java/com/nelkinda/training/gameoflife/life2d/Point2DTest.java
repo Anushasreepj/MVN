@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static com.nelkinda.training.gameoflife.life2d.Point2D.P;
 import static java.util.Set.of;
 import static java.util.stream.Collectors.toSet;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SuppressWarnings({"PMD.JUnitTestContainsTooManyAsserts", "PMD.ShortVariable"})
