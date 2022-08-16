@@ -47,7 +47,7 @@ dependencyManagement {
         }
         dependency 'org.pitest:pitest-junit5-plugin:0.15'
         dependency 'org.pitest:pitest-command-line:1.7.4'
-        dependency 'org.projectlombok:lombok:1.18.22'
+        dependency 'org.projectlombok:lombok:1.18.24'
     }
 }
 
