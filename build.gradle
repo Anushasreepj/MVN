@@ -2,10 +2,10 @@ plugins {
     id 'java'
     id 'checkstyle'
     id 'pmd'
-    id 'name.remal.sonarlint' version '1.5.0'
+    id 'name.remal.sonarlint' version '3.0.6'
     id 'org.sonarqube' version '3.3'
     id 'jacoco'
-    id 'info.solidsoft.pitest' version '1.7.4'
+    id 'info.solidsoft.pitest' version '1.9.11'
     id 'io.spring.dependency-management' version '1.0.13.RELEASE'
 }
 
@@ -45,8 +45,8 @@ dependencyManagement {
             entry 'junit-platform-suite-commons'
             entry 'junit-platform-suite-engine'
         }
-        dependency 'org.pitest:pitest-junit5-plugin:0.15'
-        dependency 'org.pitest:pitest-command-line:1.7.4'
+        dependency 'org.pitest:pitest-junit5-plugin:1.1.2'
+        dependency 'org.pitest:pitest-command-line:1.11.0'
         dependency 'org.projectlombok:lombok:1.18.24'
     }
 }
@@ -105,9 +105,9 @@ check.dependsOn jacocoTestCoverageVerification
 
 jacocoTestReport {
     reports {
-        xml.enabled true
-        csv.enabled true
-        html.enabled true
+        xml.required = true
+        csv.required = true
+        html.required = true
     }
 }
 test.finalizedBy jacocoTestReport
@@ -118,11 +118,10 @@ java {
 
 pitest {
     targetClasses.set(['com.nelkinda.training.gameoflife.*'])
-    pitestVersion.set('1.6.6')
+    pitestVersion.set('1.11.0')
     timestampedReports.set(false)
-    testPlugin.set('junit5')
     outputFormats.set(['XML', 'HTML'])
-    mutators.set(['DEFAULTS', 'STRONGER', 'CONSTRUCTOR_CALLS', 'INLINE_CONSTS', 'REMOVE_CONDITIONALS', 'REMOVE_INCREMENTS', 'ROR'])
+    mutators.set(['DEFAULTS', 'STRONGER', 'CONSTRUCTOR_CALLS', 'INLINE_CONSTS', 'REMOVE_CONDITIONALS', 'REMOVE_INCREMENTS'])
     mutationThreshold.set(100)
     coverageThreshold.set(100)
 }
@@ -150,6 +149,6 @@ test {
 }
 
 wrapper {
-    gradleVersion '7.5.1'
+    gradleVersion '8.0'
     distributionType = Wrapper.DistributionType.ALL
 }
